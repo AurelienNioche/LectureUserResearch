@@ -11,7 +11,7 @@ Usage:
     For any questions, please contact Justin Matejka (Justin.Matejka@Autodesk.com)
 
     The most basic way to try this out is to run a command like this from the command line:
-    python same_stats.py dino circle
+    python same_stats.py run dino circle
 
     That will start with the Dinosaurus dataset, and morph it into a circle.
 
@@ -23,8 +23,8 @@ Usage:
 """
 
 import warnings
-warnings.simplefilter(action = "ignore", category = FutureWarning)
-warnings.simplefilter(action = "ignore", category = UserWarning)
+warnings.simplefilter(action="ignore", category=FutureWarning)
+warnings.simplefilter(action="ignore", category=UserWarning)
 
 import os
 import sys
@@ -35,10 +35,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 import math
-import operator
 import itertools
-
-from scipy import stats
 
 import pytweening
 from tqdm import *
@@ -47,7 +44,7 @@ from docopt import docopt
 IMG_FOLDER = "img"
 BKP_CSV = "bkp_csv"
 for f in IMG_FOLDER, BKP_CSV:
-    os.makedirs(f, exists_ok=True)
+    os.makedirs(f, exist_ok=True)
 
 # setting up the style for the charts
 sns.set_style("darkgrid")
@@ -68,18 +65,19 @@ all_targets = list(line_shapes)
 all_targets.extend(['circle', 'bullseye', 'dots'])
 initial_datasets = ['dino', 'rando', 'slant', 'big_slant']
 
-#
-# these are the initial datasets which are used in the paper
-# 
+
 def load_dataset(name="dino"):
+    """
+    these are the initial datasets which are used in the paper
+    """
     if name == "dino":
         df = pd.read_csv("seed_datasets/Datasaurus_data.csv", header=None, names=['x','y'])
     elif name == "rando":
         df = pd.read_csv("seed_datasets/random_cloud.csv")
         df = df[['x', 'y']]
     elif name == "slant":
-    	df = pd.read_csv("seed_datasets/slanted_less.csv")
-    	df = df[['x', 'y']]
+        df = pd.read_csv("seed_datasets/slanted_less.csv")
+        df = df[['x', 'y']]
     elif name == "big_slant":
         df = pd.read_csv("seed_datasets/less_angled_blob.csv")
         df = df[['x', 'y']]
@@ -87,10 +85,11 @@ def load_dataset(name="dino"):
 
     return df.copy()
 
-#
-# This function calculates the summary statistics for the given set of points
-# 
+
 def get_values(df):
+    """
+    This function calculates the summary statistics for the given set of points
+    """
     xm = df.x.mean()
     ym = df.y.mean()
     xsd = df.x.std()
@@ -99,15 +98,17 @@ def get_values(df):
 
     return [xm, ym, xsd, ysd, pc]
 
-#
-# checks to see if the statistics are still within the acceptable bounds
-# with df1 as the original dataset, and df2 as the one we are testing
-#
+
 def is_error_still_ok(df1, df2, decimals=2):
+    """
+    checks to see if the statistics are still within the acceptable bounds
+     with df1 as the original dataset, and df2 as the one we are testing
+    """
     r1 = get_values(df1)
     r2 = get_values(df2)
 
-    # check each of the error values to check if they are the same to the correct number of decimals
+    # check each of the error values to check
+    # if they are the same to the correct number of decimals
     r1 = [math.floor(r*10**decimals) for r in r1]
     r2 = [math.floor(r*10**decimals) for r in r2]
 
@@ -118,52 +119,58 @@ def is_error_still_ok(df1, df2, decimals=2):
     return np.max(er) == 0
 
 
+def line_magnitude(x1, y1, x2, y2):
+    lm = math.sqrt(math.pow((x2 - x1), 2) + math.pow((y2 - y1), 2))
+    return lm
 
-def lineMagnitude (x1, y1, x2, y2):
-    lineMagnitude = math.sqrt(math.pow((x2 - x1), 2)+ math.pow((y2 - y1), 2))
-    return lineMagnitude
 
-#
-# This function calcualtes the minimum distance between a point and a line, used
-# to determine if the points are getting closer to the target
-#
-def DistancePointLine (px, py, x1, y1, x2, y2):
-    #http://local.wasp.uwa.edu.au/~pbourke/geometry/pointline/source.vba
-    LineMag = lineMagnitude(x1, y1, x2, y2)
+def distance_point_line(px, py, x1, y1, x2, y2):
+    """
+    this function calcualtes the minimum distance between a point and a line,
+    used to determine if the points are getting closer to the target
+    """
+    # http://local.wasp.uwa.edu.au/~pbourke/geometry/pointline/source.vba
+    line_mag = line_magnitude(x1, y1, x2, y2)
 
-    if LineMag < 0.00000001:
-        DistancePointLine = 9999
-        return DistancePointLine
+    if line_mag < 0.00000001:
+        dpl = 9999
+        return dpl
 
     u1 = (((px - x1) * (x2 - x1)) + ((py - y1) * (y2 - y1)))
-    u = u1 / (LineMag * LineMag)
+    u = u1 / (line_mag * line_mag)
 
     if (u < 0.00001) or (u > 1):
-        #// closest point does not fall within the line segment, take the shorter distance
-        #// to an endpoint
-        ix = lineMagnitude(px, py, x1, y1)
-        iy = lineMagnitude(px, py, x2, y2)
+        # closest point does not fall within the line segment,
+        # take the shorter distance to an endpoint
+        ix = line_magnitude(px, py, x1, y1)
+        iy = line_magnitude(px, py, x2, y2)
         if ix > iy:
-            DistancePointLine = iy
+            dpl = iy
         else:
-            DistancePointLine = ix
+            dpl = ix
     else:
         # Intersecting point is on the line, use the formula
         ix = x1 + u * (x2 - x1)
         iy = y1 + u * (y2 - y1)
-        DistancePointLine = lineMagnitude(px, py, ix, iy)
+        dpl = line_magnitude(px, py, ix, iy)
 
-    return DistancePointLine
+    return dpl
 
-# save the plot to an image file
-def save_scatter(df, iter, dp=72):
+
+def save_scatter(df, itr, dp=72):
+    """
+    save the plot to an image file
+    """
     show_scatter(df)
-    plt.savefig(os.path.join(IMG_FOLDER, str(iter) + ".png"), dpi=dp)
+    plt.savefig(os.path.join(IMG_FOLDER, str(itr) + ".png"), dpi=dp)
     plt.clf()
     plt.cla()
     plt.close()
 
-def save_scatter_and_results(df, iter, dp=72, labels=["X Mean", "Y Mean", "X SD", "Y SD", "Corr."]):
+
+def save_scatter_and_results(df, iter, dp=72,
+                             labels=("X Mean", "Y Mean",
+                                     "X SD", "Y SD", "Corr.")):
     show_scatter_and_results(df, labels=labels)
     plt.savefig(os.path.join(IMG_FOLDER, str(iter) + ".png"), dpi=dp)
     plt.clf()
@@ -171,17 +178,26 @@ def save_scatter_and_results(df, iter, dp=72, labels=["X Mean", "Y Mean", "X SD"
     plt.close()
 
 
-# create a plot of the data
-def show_scatter(df, xlim=(-5, 105), ylim=(-5, 105), color="black", marker="o", reg_fit=False):
-    sns.regplot("x", y="y", data=df, ci=None, fit_reg=reg_fit, marker=marker,
-           scatter_kws={"s": 50, "alpha": 0.7, "color":color},
-                line_kws={"linewidth":4, "color":"red"})
+def show_scatter(df, xlim=(-5, 105), ylim=(-5, 105), color="black",
+                 marker="o", reg_fit=False):
+    """
+    create a plot of the data
+    """
+    sns.regplot(
+        "x", y="y", data=df, ci=None, fit_reg=reg_fit, marker=marker,
+        scatter_kws={"s": 50, "alpha": 0.7, "color": color},
+        line_kws={"linewidth": 4, "color": "red"})
     plt.xlim(xlim)
     plt.ylim(ylim)
     plt.tight_layout()
 
-# create a plot which shows both the plot, and the text of the summary statistics
-def show_scatter_and_results(df, labels=["X Mean", "Y Mean", "X SD", "Y SD", "Corr."]):
+
+def show_scatter_and_results(df, labels=("X Mean", "Y Mean",
+                                         "X SD", "Y SD", "Corr.")):
+    """
+    create a plot which shows both the plot,
+    and the text of the summary statistics
+    """
     plt.figure(figsize=(12, 5))
     sns.regplot("x", y="y", data=df, ci=None, fit_reg=False,
                 scatter_kws={"s": 50, "alpha": 0.7, "color":"black"})
@@ -211,16 +227,18 @@ def show_scatter_and_results(df, labels=["X Mean", "Y Mean", "X SD", "Y SD", "Co
 def dist(p1, p2):
     return math.sqrt((p1[0]-p2[0])**2 + (p1[1]-p2[1])**2)
 
+
 def average_location(pairs):
     xs = [p[0] for p in pairs]
     ys = [p[1] for p in pairs]
     return [np.mean(xs), np.mean(ys)]
 
-#
-# These are the hardcoded shapes which we perturb towards. It would useful to have
-# a tool for drawing these shapes instead
-#
+
 def get_points_for_shape(line_shape):
+    """
+     These are the hardcoded shapes which we perturb towards. It would useful to have
+     a tool for drawing these shapes instead
+    """
     lines = []
     if line_shape == 'x':
         l1 = [[20, 0], [100, 100]]
@@ -270,20 +288,20 @@ def get_points_for_shape(line_shape):
     return lines
 
 
-#
-# This is the function which does one round of perturbation
-# df: is the current dataset
-# initial: is the original dataset
-# target: is the name of the target shape
-# shake: the maximum amount of movement in each iteration
-#
 def perturb(df, initial, target='circle',
-            line_error = 1.5,
+            line_error=1.5,
             shake=0.1,
-            allowed_dist = 2,
-            temp = 0,
-            x_bounds=[0, 100], y_bounds=[0, 100],
+            allowed_dist=2,
+            temp=0,
+            x_bounds=(0, 100), y_bounds=(0, 100),
             custom_points = None):
+    """
+    This is the function which does one round of perturbation
+    df: is the current dataset
+    initial: is the original dataset
+    target: is the name of the target shape
+    shake: the maximum amount of movement in each iteration
+    """
 
     # take one row at random, and move one of the points a bit
     row = np.random.randint(0, len(df))
@@ -323,27 +341,39 @@ def perturb(df, initial, target='circle',
             new_dist = np.min([abs(dc2 - r) for r in rs])
 
         elif target == 'dots':
-            # create a grid of "cluster points" and move if you are getting closer
+            # create a grid of "cluster points" and move
+            # if you are getting closer
             # (or are already close enough)
             xs = [25, 50, 75]
             ys = [20, 50, 80]
 
-            old_dist = np.min([dist([x,y], [df['x'][row], df['y'][row]]) for x,y in itertools.product(xs, ys)])
-            new_dist = np.min([dist([x,y], [xm, ym]) for x,y in itertools.product(xs, ys)])
+            old_dist = np.min([dist([x, y], [df['x'][row], df['y'][row]])
+                               for x, y in itertools.product(xs, ys)])
+            new_dist = np.min([dist([x, y], [xm, ym])
+                               for x, y in itertools.product(xs, ys)])
 
         elif target in line_shapes:
             lines = get_points_for_shape(target)
 
             # calculate how far the point is from the closest one of these
-            old_dist = np.min([DistancePointLine(i_xm, i_ym, l[0][0], l[0][1], l[1][0], l[1][1]) for l in lines])
-            new_dist = np.min([DistancePointLine(xm, ym, l[0][0], l[0][1], l[1][0], l[1][1]) for l in lines])
+            old_dist = np.min([distance_point_line(i_xm, i_ym,
+                                                   li[0][0], li[0][1],
+                                                   li[1][0], li[1][1])
+                               for li in lines])
+            new_dist = np.min([distance_point_line(xm, ym,
+                                                   li[0][0], li[0][1],
+                                                   li[1][0], li[1][1])
+                               for li in lines])
+        else:
+            raise ValueError
 
         # check if the new distance is closer than the old distance
         # or, if it is less than our allowed distance
         # or, if we are do_bad, that means we are accpeting it no matter what
         # if one of these conditions are met, jump out of the loop
-        if ((new_dist < old_dist or new_dist < allowed_dist or do_bad) and 
-            ym > y_bounds[0] and ym < y_bounds[1] and xm > x_bounds[0] and xm < x_bounds[1]):
+        if (new_dist < old_dist or new_dist < allowed_dist or do_bad) \
+                and y_bounds[0] < ym < y_bounds[1] \
+                and x_bounds[0] < xm < x_bounds[1]:
             break
 
     # set the new data point, and return the set
@@ -351,10 +381,11 @@ def perturb(df, initial, target='circle',
     df['y'][row] = ym
     return df
 
+
 def s_curve(v):
     return pytweening.easeInOutQuad(v)
 
-import sys
+
 def is_kernel():
     if 'IPython' not in sys.modules:
         # IPython hasn't been imported, definitely not
@@ -363,20 +394,23 @@ def is_kernel():
     # check for `kernel` attribute on the IPython instance
     return getattr(get_ipython(), 'kernel', None) is not None
 
-#
-# this is the main fucntion, for taking one datset and perturbing it into a target shape
-# df: the initial dataset
-# target: the shape we are aiming for
-# iters: how many iterations to run the algorithm for
-# num_frames: how many frames to save to disk (for animations)
-# decimals: how many decimal points to keep fixed
-# shake: the maximum movement for a single interation
-# 
-def run_pattern(df, target, iters = 100000, num_frames=100, decimals=2, shake=0.2,
-                max_temp = 0.4, min_temp = 0,
-                ramp_in = False, ramp_out = False, freeze_for = 0,
-                labels=["X Mean", "Y Mean", "X SD", "Y SD", "Corr."],
-                reset_counts = False, custom_points = False):
+
+def run_pattern(df, target, iters = 100000, num_frames=100, decimals=2,
+                shake=0.2,
+                max_temp=0.4, min_temp=0,
+                ramp_in=False, ramp_out=False, freeze_for=0,
+                labels=("X Mean", "Y Mean", "X SD", "Y SD", "Corr."),
+                reset_counts=False, custom_points=False):
+    """
+     this is the main fucntion, for taking one datset and perturbing it
+     into a target shape
+        df: the initial dataset
+        target: the shape we are aiming for
+        iters: how many iterations to run the algorithm for
+        num_frames: how many frames to save to disk (for animations)
+        decimals: how many decimal points to keep fixed
+        shake: the maximum movement for a single iteration
+    """
 
     global frame_count
     global it_count
@@ -388,24 +422,30 @@ def run_pattern(df, target, iters = 100000, num_frames=100, decimals=2, shake=0.
     r_good = df.copy()
 
     # this is a list of frames that we will end up writing to file
-    write_frames = [int(round(pytweening.linear(x) * iters)) for x in np.arange(0, 1, 1/(num_frames-freeze_for))]
+    write_frames = [int(round(pytweening.linear(x) * iters))
+                    for x in np.arange(0, 1, 1/(num_frames-freeze_for))]
 
     if ramp_in and not ramp_out:
-        write_frames = [int(round(pytweening.easeInSine(x) * iters)) for x in np.arange(0, 1, 1/(num_frames-freeze_for))]
+        write_frames = [int(round(pytweening.easeInSine(x) * iters))
+                        for x in np.arange(0, 1, 1/(num_frames-freeze_for))]
     elif ramp_out and not ramp_in:
-        write_frames = [int(round(pytweening.easeOutSine(x) * iters)) for x in np.arange(0, 1, 1/(num_frames-freeze_for))]
+        write_frames = [int(round(pytweening.easeOutSine(x) * iters))
+                        for x in np.arange(0, 1, 1/(num_frames-freeze_for))]
     elif ramp_out and ramp_in:
-        write_frames = [int(round(pytweening.easeInOutSine(x) * iters)) for x in np.arange(0, 1, 1/(num_frames-freeze_for))]
+        write_frames = [int(round(pytweening.easeInOutSine(x) * iters))
+                        for x in np.arange(0, 1, 1/(num_frames-freeze_for))]
 
     extras = [iters] * freeze_for
     write_frames.extend(extras)
 
-    # this gets us the nice progress bars in the notbook, but keeps it from crashing
+    # this gets us the nice progress bars in the notebook,
+    # but keeps it from crashing
     looper = trange
     if is_kernel():
         looper = tnrange
 
-    # this is the main loop, were we run for many iterations to come up with the pattern
+    # this is the main loop, were we run for many iterations
+    # to come up with the pattern
     for i in looper(iters+1, leave=True, ascii=True, desc=target + " pattern"):
         t = (max_temp - min_temp) * s_curve(((iters-i)/iters)) + min_temp
 
@@ -414,25 +454,33 @@ def run_pattern(df, target, iters = 100000, num_frames=100, decimals=2, shake=0.
         else:
             raise Exception("bah, that's not a proper type of pattern")
 
-        # here we are checking that after the purturbation, that the statistics are still within the allowable bounds
+        # here we are checking that after the purturbation,
+        # that the statistics are still within the allowable bounds
         if is_error_still_ok(df, test_good, decimals):
             r_good = test_good
 
         # save this chart to the file
         for x in range(write_frames.count(i)):
-            save_scatter_and_results(r_good, target + "-image-"+format(int(frame_count), '05'), 150, labels = labels)
-            #save_scatter(r_good, target + "-image-"+format(int(frame_count), '05'), 150)
-            r_good.to_csv(os.path.join(BKP_CSV, target + "-data-" + format(int(frame_count), '05') + ".csv"))
+            save_scatter_and_results(
+                r_good, target + "-image-"+format(int(frame_count), '05'),
+                150, labels=labels)
+            # save_scatter(r_good, target + "-image-"+format(int(frame_count),
+            # '05'), 150)
+            r_good.to_csv(os.path.join(
+                BKP_CSV,
+                target + "-data-" + format(int(frame_count), '05') + ".csv"))
 
             frame_count = frame_count + 1
     return r_good
 
-#
-# function to load a dataset, and then perturb it
-# start_dataset is a string, and one of ['dino', 'rando', 'slant', 'big_slant']
-# 
 
-def do_single_run(start_dataset, target, iterations=100000, decimals=2, num_frames=100):
+def do_single_run(start_dataset, target, iterations=100000,
+                  decimals=2, num_frames=100):
+
+    """
+    function to load a dataset, and then perturb it
+    start_dataset is a string, and one of ['dino', 'rando', 'slant', 'big_slant']
+    """
     global it_count
     global frame_count
     it_count = 0
@@ -442,16 +490,20 @@ def do_single_run(start_dataset, target, iterations=100000, decimals=2, num_fram
     temp = run_pattern(df, target, iters=iterations, num_frames=num_frames)
     return temp
 
-def print_stats(df):
-    print ("N: ", len(df))
-    print ("X mean: ", df.x.mean())
-    print ("X SD: ", df.x.std())
-    print ("Y mean: ", df.y.mean())
-    print ("Y SD: ", df.y.std())
-    print ("Pearson correlation: ", df.corr().x.y)
 
-# run <shape_start> <shape_end> [<iters>][<decimals>]
-if __name__ == '__main__':
+def print_stats(df):
+    print("N: ", len(df))
+    print("X mean: ", df.x.mean())
+    print("X SD: ", df.x.std())
+    print("Y mean: ", df.y.mean())
+    print("Y SD: ", df.y.std())
+    print("Pearson correlation: ", df.corr().x.y)
+
+
+def main():
+    """
+        run <shape_start> <shape_end> [<iters>][<decimals>]
+    """
     arguments = docopt(__doc__, version='Same Stats 1.0')
     if arguments['run']:
         it = 100000
@@ -468,9 +520,14 @@ if __name__ == '__main__':
         shape_end = arguments['<shape_end>']
 
         if shape_start in initial_datasets and shape_end in all_targets:
-            do_single_run(shape_start, shape_end, iterations=it, decimals=de, num_frames=frames)
+            do_single_run(shape_start, shape_end, iterations=it, decimals=de,
+                          num_frames=frames)
         else:
-            print ("************* One of those shapes isn't correct:")
+            print("************* One of those shapes isn't correct:")
             print("shape_start must be one of ", initial_datasets)
             print("shape_end must be one of ", all_targets)
+
+
+if __name__ == '__main__':
+    main()
 
