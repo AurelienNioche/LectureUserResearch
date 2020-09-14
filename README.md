@@ -10,4 +10,4 @@ Access the Lecture 2 (Research Design):
 Access the Lecture 3 (Inference)
 
 *  [View](https://github.com/AurelienNioche/LectureUserResearch/blob/master/lecture3.ipynb)
-* [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AurelienNioche/LectureUserResearch/master?filepath=lecture3.ipynb)
+* [![Binder](https://mybinder.org/badge_logo.svg) Interactive model](https://mybinder.org/v2/gh/AurelienNioche/LectureUserResearch/master?filepath=lecture3.ipynb)
