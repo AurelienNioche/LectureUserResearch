@@ -144,3 +144,8 @@ cython_debug/
 
 /SameStatsCode/img/
 /SameStatsCode/bkp_csv/
+
+#Data
+/exercises/exercise_demos/data/
+
+.DS_Store
