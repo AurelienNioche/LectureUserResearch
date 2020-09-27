@@ -149,3 +149,5 @@ cython_debug/
 /exercises/exercise_demos/data/
 
 .DS_Store
+
+/bkp
