@@ -10,7 +10,7 @@ Lecture 3 (Inference)
 
 * [![](img/logo/GitHub-Mark.pdf) View](./lecture3.html)
 
-* [![Binder](https://mybinder.org/badge_logo.svg) View](https://mybinder.org/v2/gh/AurelienNioche/LectureUserResearch/master?filepath=lecture3.ipynb)
+* [![Binder](https://mybinder.org/badge_logo.svg) Interactive mode](https://mybinder.org/v2/gh/AurelienNioche/LectureUserResearch/master?filepath=lecture3.ipynb)
 
 Lecture 10 (User modeling)
 
