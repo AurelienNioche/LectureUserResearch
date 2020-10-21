@@ -1,4 +1,4 @@
-# Lecture User Research
+# LectureUserResearch
 
 
 Lecture 2 (Research Design):
