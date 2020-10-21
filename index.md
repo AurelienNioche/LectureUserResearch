@@ -12,7 +12,7 @@ Lecture 3 (Inference)
 
 * [![Binder](https://mybinder.org/badge_logo.svg) Interactive mode](https://mybinder.org/v2/gh/AurelienNioche/LectureUserResearch/master?filepath=lecture3.ipynb)
 
-Lecture 10 (User modeling)
+Lecture 10 (User Modeling)
 
 * [![](img/logo/HTML5_logo.svg){:height="20px"} View](./lecture10.html)
 
