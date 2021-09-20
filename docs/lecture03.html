@@ -15489,7 +15489,7 @@ height=257
 <a href="https://www.oxfordreference.com/view/10.1093/oi/authority.20110803095809504">Oxford Reference</a>
 
 
-...in our context: the test result indicates a significant difference while it was actually not the case.
+...in our context: the test result indicates a significant difference while it was actually no difference in the parent populations.
 </div><p>Let's take an example...</p>
 
 </div>
@@ -15928,10 +15928,10 @@ height=275
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="alert alert-block alert-info">
 
-**False negative**: A result of a diagnostic test or procedure that wrongly indicates the absence of a disease or other condition.
+<b>False negative</b>: A result of a diagnostic test or procedure that wrongly indicates the absence of a disease or other condition.
     <a href="https://www.oxfordreference.com/view/10.1093/oi/authority.20110803095809486">Oxford Reference</a>
 
-...in our context: a significant difference.
+...in our context: the test result indicates a non-significant difference while they were actually a difference in the parent populations.
 </div><p>Let's take an example...</p>
 
 </div>
@@ -16323,13 +16323,16 @@ height=275
 
 Note that for computing a Student t-test, the following conditions about the parent distribution need to be met:
 
-* <b>Normality</b>: The population from which the sample is drawn is normally distributed.
+<ul>
+<li> <b>Normality</b>: The population from which the sample is drawn is normally distributed.</li>
 
-* <b>Homogeneity of variances</b>: The populations from which samples are drawn are approximately equal</b>.
+<li> <b>Homogeneity of variances</b>: The populations from which samples are drawn are approximately equal.</li>
+</ul>
 
 Furthermore, the following conditions about the samples need to be met:
-* <b> Equal size of sample </b>: Both samples are of the same size.
-
+<ul>
+    <li><b> Equal size of sample </b>: Both samples are of the same size.</li>
+</ul>   
 </div><p>Let's come back on this in the next section.</p>
 
 </div>
@@ -16345,7 +16348,7 @@ Furthermore, the following conditions about the samples need to be met:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Formula-">Formula <a class="tocSkip" /><a class="anchor-link" href="#Formula-">&#182;</a></h3>
+<h3 id="Formula">Formula<a class="anchor-link" href="#Formula">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -16378,7 +16381,7 @@ $${s_{X=[x_1, ..., x_n]}^{2}= {\frac {1}{n-1}}\sum _{i=1}^{n}\left(x_{i}-{\overl
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Intuiton-on-degrees-on-freedom-">Intuiton on degrees on freedom <a class="tocSkip" /><a class="anchor-link" href="#Intuiton-on-degrees-on-freedom-">&#182;</a></h4>
+<h4 id="Intuition-on-degrees-on-freedom-">Intuition on degrees on freedom <a class="tocSkip" /><a class="anchor-link" href="#Intuition-on-degrees-on-freedom-">&#182;</a></h4>
 </div>
 </div>
 </div>
@@ -16398,7 +16401,7 @@ $${s_{X=[x_1, ..., x_n]}^{2}= {\frac {1}{n-1}}\sum _{i=1}^{n}\left(x_{i}-{\overl
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Example-">Example <a class="tocSkip" /><a class="anchor-link" href="#Example-">&#182;</a></h3>
+<h3 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -17307,7 +17310,7 @@ height=376
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's know compute p-value.</p>
+<p>Now, let's compute the p-value.</p>
 <p>It is finally quite easy now, we just need to look at CDF for the specific $t$-statistic that we obtained when comparing our two samples, and multiply by 2 (why to multiply by 2? we reply to this question just after)</p>
 
 </div>
