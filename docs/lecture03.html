@@ -16459,6 +16459,28 @@ height=275
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Conditions-of-application">Conditions of application<a class="anchor-link" href="#Conditions-of-application">&#182;</a></h2><p>For the magic to operate, some conditions need to me be met.</p>
+<div class="alert alert-block alert-danger">
+<h2><img src="img/logo/warning.png" width="20" align="left"><a class="tocSkip"></a>&nbsp;Important</h2>
+<br>
+
+Note that for computing a Student t-test, the following conditions about the parent distribution need to be met:
+
+* <b>Normality</b>: The population from which the sample is drawn is normally distributed.
+
+* <b>Homogeneity of variances</b>: The populations from which samples are drawn are approximately equal</b>.
+
+Furthermore, the following conditions about the samples need to be met:
+* <b> Equal size of sample </b>: Both samples are of the same size.
+
+</div><p>Let's come back on this in the next section.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Compute-the-t-statistic">Compute the t-statistic<a class="anchor-link" href="#Compute-the-t-statistic">&#182;</a></h2>
 </div>
 </div>
@@ -17719,7 +17741,7 @@ height=376
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="The-condition-of-application-of-a-stastical-test:-Which-test-can-I-use?">The condition of application of a stastical test: Which test can I use?<a class="anchor-link" href="#The-condition-of-application-of-a-stastical-test:-Which-test-can-I-use?">&#182;</a></h1>
+<h1 id="The-condition-of-application-of-a-statistical-test:-What-alternatives-to-the-t-test-for-mean-comparison?">The condition of application of a statistical test: What alternatives to the t-test for mean comparison?<a class="anchor-link" href="#The-condition-of-application-of-a-statistical-test:-What-alternatives-to-the-t-test-for-mean-comparison?">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -17734,7 +17756,10 @@ height=376
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="img/doc_t_test.png" width="600"></p>
+<p><img src="img/doc_t_test1.png" width="600">
+<img src="img/doc_t_test2.png" width="600">
+<img src="img/doc_t_test3.png" width="600">
+<img src="img/doc_t_test4.png" width="600"></p>
 
 </div>
 </div>
@@ -17742,16 +17767,20 @@ height=376
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>A Student t-test assumes that:</p>
-<ul>
-<li><p><b> Equal size of sample </b></p>
-</li>
-<li><p><b> Normal distribution</b>:  The population from which samples are drawn should be normally distributed.</p>
-</li>
-<li><p><b>Homogeneity of variance</b>: Homogeneity means that the variance among the groups should be approximately equal.</p>
-</li>
-</ul>
+<div class="alert alert-block alert-danger">
+<h2><img src="img/logo/warning.png" width="20" align="left"><a class="tocSkip"></a>&nbsp;Important</h2>
+<br>
 
+Note that for computing a Student t-test, the following conditions about the parent distribution need to be met:
+
+* <b>Normality</b>: The population from which the sample is drawn is normally distributed.
+
+* <b>Homogeneity of variances</b>: The populations from which samples are drawn are approximately equal</b>.
+
+Furthermore, the following conditions about the samples need to be met:
+* <b> Equal size of sample </b>: Both samples are of the same size.
+
+</div>
 </div>
 </div>
 </div>
@@ -18207,7 +18236,7 @@ $${\displaystyle s_{\bar {\Delta }}={\sqrt {{\frac {s_{1}^{2}}{n_{1}}}+{\frac {s
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="The-distribution-is-not-(does-not-seem)-normal:-Rank-dependant-tests">The distribution is not (does not seem) normal: Rank dependant tests<a class="anchor-link" href="#The-distribution-is-not-(does-not-seem)-normal:-Rank-dependant-tests">&#182;</a></h2>
+<h2 id="The-distribution-is-not-(does-not-seem)-normal:-Mann-Whitney-U">The distribution is not (does not seem) normal: Mann-Whitney U<a class="anchor-link" href="#The-distribution-is-not-(does-not-seem)-normal:-Mann-Whitney-U">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -18509,7 +18538,7 @@ height=376
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Mean-comparison:-Mann&#8211;Whitney-U">Mean-comparison: Mann&#8211;Whitney U<a class="anchor-link" href="#Mean-comparison:-Mann&#8211;Whitney-U">&#182;</a></h3>
+<h3 id="Computing-the-Mann&#8211;Whitney-U">Computing the Mann&#8211;Whitney U<a class="anchor-link" href="#Computing-the-Mann&#8211;Whitney-U">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -18975,15 +19004,7 @@ $$\sigma^2_{\text{corr}}={\sqrt {{n_{1}n_{2} \over 12}\left((n+1)-\sum _{i=1}^{k
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Other-non-parametric-tests">Other non-parametric tests<a class="anchor-link" href="#Other-non-parametric-tests">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Correlation-">Correlation <a class="tocSkip" /><a class="anchor-link" href="#Correlation-">&#182;</a></h4><p>For correlation, you can use the <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.spearmanr.html">Spearman correlation coefficient</a>.</p>
-
+<h1 id="Except-mean-comparison,-for-what-can-I-use-inferential-statistics?">Except mean comparison, for what can I use inferential statistics?<a class="anchor-link" href="#Except-mean-comparison,-for-what-can-I-use-inferential-statistics?">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -19010,6 +19031,21 @@ $$r_{XY}= \frac {\sum \limits _{i=1}^{n}(x_{i}-{\bar {X}})(y_{i}-{\bar {Y}})}{\s
 <p>where $\overline {X}$ and $\overline {Y}$ are the means of $X$ and $Y$, and $s_{x}$ and $s_{y}$ are the corrected standard deviations of $X$ and $Y$.</p>
 <p>Original article:  <a href="https://doi.org/10.1098/rspl.1895.0041">Pearson, Karl (1895). "Notes on regression and inheritance in the case of two parents". Proceedings of the Royal Society of London. 58: 240–242</a>.</p>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-block alert-danger">
+<h2><img src="img/logo/warning.png" width="20" align="left"><a class="tocSkip"></a>&nbsp;Important</h2>
+<br>
+
+Note that for applying a test based on a Pearson correlation, the following conditions about the parent distributions need to be met:
+
+* <b>Normality</b>: The population from which the samples are drawn are normally distributed.
+
+</div>
 </div>
 </div>
 </div>
@@ -19341,8 +19377,9 @@ with $\nu = n-2$ the number of degrees of freedom.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="img/doc_cor.png" width="500">
-<img src="img/doc_cor2.png" width="500"></p>
+<p><img src="img/doc_cor1.png" width="500">
+<img src="img/doc_cor2.png" width="500">
+<img src="img/doc_cor3.png" width="500"></p>
 
 </div>
 </div>
@@ -19558,7 +19595,14 @@ height=376
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>An alternative will be to use to the corresponding <strong>non-parametric test</strong>: the <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.spearmanr.html">Spearman correlation coefficient</a>.</p>
+<h3 id="The-Spearman-correlation-coefficient-(rank-dependent-alternative)">The Spearman correlation coefficient (rank-dependent alternative)<a class="anchor-link" href="#The-Spearman-correlation-coefficient-(rank-dependent-alternative)">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>An rank dependent alternative to the Pearson correlation  is the <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.spearmanr.html">Spearman correlation coefficient</a>. This test <strong>does not</strong> require the <strong>normality of the parent populations</strong>.</p>
 
 </div>
 </div>
@@ -19573,30 +19617,32 @@ height=376
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>We are looking for a $c$, such that we can 'bound' the mean, and obtain a confidence interval (CI) such that:
+$$\text{CI} = \big(\bar{X} - c,\bar{X} + c\big)$$</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>They are two main cases: the <strong>standard deviation</strong> from the parent population is <strong>known</strong>, the <strong>standard deviation</strong> from the parent population is <strong>unknown</strong>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <div class="alert alert-block alert-danger">
 <h2><img src="img/logo/warning.png" width="20" align="left"><a class="tocSkip"></a>&nbsp;Important</h2>
 <br>
 
-To compute a Confidence interval using the following methods requires that the data are **normally distributed**.
+Note that for computing a confidence interval in both cases below (SD known, SD unknown), the following conditions about the parent distribution need to be met:
+
+* <b>Normality</b>: The population from which the sample is drawn is normally distributed.
 
 </div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>We are looking for a $c$, such that we can 'bound' the mean, and obtain a confidence interval (CI) such that:
-$$CI = \big(\bar{X} - c,\bar{X} + c\big)$$</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>They are two main cases:</p>
-
 </div>
 </div>
 </div>
@@ -19620,7 +19666,7 @@ $$CI = \big(\bar{X} - c,\bar{X} + c\big)$$</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The population standard deviation is known (or we have a very large sample, which means we have a reliable estimate of the SD), then:</p>
 $$c = z^{*}{\sigma  \over {\sqrt {n}}}$$<p>with</p>
-$$z^{*}=\Phi ^{-1}\left(1 - \frac{\alpha }{2}\right)$$<p>where $\Phi^{-1}$ is the inverse CDF of the normal distribution, $\alpha$ is the error level (e.g., 5% for a confidence level at 95%).</p>
+$$z^{*}=\Phi ^{-1}\left(1 - \frac{\alpha }{2}\right)$$<p>where $\Phi^{-1}$ is the <a href="https://en.wikipedia.org/wiki/Probit">probit function</a> (inverse CDF of the normal distribution), $\alpha$ is the error level (e.g., 5% for a confidence level at 95%).</p>
 <p><em>Note: This is the most 'classic' formula. However, in practice, it is NOT the formula to use, as, most of the time, we don't know the population standard deviation.</em></p>
 
 </div>
@@ -20531,6 +20577,35 @@ height=275
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Other-&quot;classic&quot;-tests">Other "classic" tests<a class="anchor-link" href="#Other-&quot;classic&quot;-tests">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>One ultra "classic" test that we will not discuss here is the compare the effect of two factors, you can use an ANOVA (<b>ANalysis Of VAriance</b>). It is useful to discuss the <a href="https://en.wikipedia.org/wiki/Interaction_(statistics">interaction effects</a>).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that for applying an ANOVA, the following conditions about the parent distribution need to be met:</p>
+<ul>
+<li><p><b>Normality</b>: The populations from which samples are drawn are normally distributed.</p>
+</li>
+<li><p><b>Homogeneity of variances</b>: The populations from which samples are drawn are approximately equal&lt;/b&gt;.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="External-validity:-The-todo-NOT-list">External validity: The todo-NOT list<a class="anchor-link" href="#External-validity:-The-todo-NOT-list">&#182;</a></h1>
 </div>
 </div>
@@ -20673,14 +20748,14 @@ height=523
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="ANOVA">ANOVA<a class="anchor-link" href="#ANOVA">&#182;</a></h2>
+<h2 id="Compare-the-effect-of-two-factors:-ANOVA">Compare the effect of two factors: ANOVA<a class="anchor-link" href="#Compare-the-effect-of-two-factors:-ANOVA">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>I want to compare the effect of two factors, you can use an ANOVA (<b>ANalysis Of VAriance</b>).</p>
+<p>I want to compare the effect of two factors, you can use an ANOVA (<b>ANalysis Of VAriance</b>). It is useful to discuss the <a href="https://en.wikipedia.org/wiki/Interaction_(statistics">interaction effects</a>).</p>
 
 </div>
 </div>
