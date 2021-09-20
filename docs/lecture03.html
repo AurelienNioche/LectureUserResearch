@@ -15503,7 +15503,7 @@ height=257
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[147]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Seed the random number generator</span>
@@ -15533,7 +15533,7 @@ height=257
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[41]:</div>
+    <div class="prompt output_prompt">Out[147]:</div>
 
 
 
@@ -15672,88 +15672,16 @@ height=257
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set the parameters</span>
-<span class="n">n_dataset</span> <span class="o">=</span> <span class="mi">10000</span>
-
-<span class="c1"># Container for the results </span>
-<span class="n">mu1_sup_mu2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_dataset</span><span class="p">)</span>
-
-<span class="c1"># Create data for each dataset</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_dataset</span><span class="p">):</span>
-    
-    <span class="c1"># Create two samples</span>
-    <span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sig1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">m2</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sig2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-    
-    <span class="c1"># Look if observed mean for sample 1</span>
-    <span class="c1"># is superior for sample 2</span>
-    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
-    
-    <span class="c1"># Store the result </span>
-    <span class="n">mu1_sup_mu2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span>
-
-<span class="c1"># Compute the frequence with which </span>
-<span class="c1"># &#39;inverse&#39; difference is observed</span>
-<span class="n">err_freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mu1_sup_mu2</span><span class="p">)</span>
-
-<span class="c1"># Create figure and axis</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-
-<span class="c1"># Define labels</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Error (freq)&#39;</span><span class="p">,</span> <span class="s2">&quot;p-value / 2&quot;</span><span class="p">]</span>
-
-<span class="c1"># Defines values</span>
-<span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">err_freq</span><span class="p">,</span> <span class="n">p</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span>
-
-<span class="c1"># Create barplot</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
-
-<span class="c1"># Set the limit of the y-axis</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-    </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Compute-sample-means-">Compute sample means <a class="tocSkip" /><a class="anchor-link" href="#Compute-sample-means-">&#182;</a></h4>
 </div>
 </div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-42-83901786a624&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      9</span> 
-<span class="ansi-green-intense-fg ansi-bold">     10</span>     <span class="ansi-red-fg"># Create two samples</span>
-<span class="ansi-green-fg">---&gt; 11</span><span class="ansi-red-fg">     </span>x1 <span class="ansi-blue-fg">=</span> np<span class="ansi-blue-fg">.</span>random<span class="ansi-blue-fg">.</span>normal<span class="ansi-blue-fg">(</span>m1<span class="ansi-blue-fg">,</span> scale<span class="ansi-blue-fg">=</span>sig1<span class="ansi-blue-fg">,</span> size<span class="ansi-blue-fg">=</span>n<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     12</span>     x2 <span class="ansi-blue-fg">=</span> np<span class="ansi-blue-fg">.</span>random<span class="ansi-blue-fg">.</span>normal<span class="ansi-blue-fg">(</span>m2<span class="ansi-blue-fg">,</span> scale<span class="ansi-blue-fg">=</span>sig2<span class="ansi-blue-fg">,</span> size<span class="ansi-blue-fg">=</span>n<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     13</span> 
-
-<span class="ansi-red-fg">NameError</span>: name &#39;m1&#39; is not defined</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="prompt input_prompt">In&nbsp;[152]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">mean_x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x1</span><span class="p">)</span>
@@ -15790,13 +15718,21 @@ sample mean x2: 96.09697686169982
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that the sample means are different even if the population mean is the same (<code>mu=100</code>).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Visualize-data-">Visualize data <a class="tocSkip" /><a class="anchor-link" href="#Visualize-data-">&#182;</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[158]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create the fig and axes</span>
@@ -15875,7 +15811,7 @@ height=275
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="prompt input_prompt">In&nbsp;[159]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set the threshold </span>
@@ -15885,7 +15821,7 @@ height=275
 <span class="n">t</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Print the results</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;t=</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">, p=</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">, can reject=</span><span class="si">{</span><span class="n">p</span> <span class="o">&lt;</span> <span class="n">thr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;t=</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">, p=</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">, can reject null hypothesis=</span><span class="si">{</span><span class="n">p</span> <span class="o">&lt;</span> <span class="n">thr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -15902,7 +15838,7 @@ height=275
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>t=2.324641079949218, p=0.025533350157787085, can reject=True
+<pre>t=2.876625072015511, p=0.0065575161957760865, can reject null hypothesis=True
 </pre>
 </div>
 </div>
@@ -15914,7 +15850,7 @@ height=275
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Result indicates that we can reject the null-hypothesis (and saying something like 'there is a difference'), while we should not do so (we know by construction that $x_1$ and $x_2$ come from the same distribution): it is a <strong>false positive</strong>.</p>
+<p>Result indicates that we can reject the null-hypothesis (and saying something like 'there is a difference'), while we should not do so (we know by construction that $x_1$ and $x_2$ come from the same distribution, and therefore that the population mean of the two samples is the same): it is a <strong>false positive</strong>.</p>
 
 </div>
 </div>
@@ -15950,7 +15886,7 @@ height=275
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="prompt input_prompt">In&nbsp;[160]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Seed the random number generator</span>
@@ -15980,7 +15916,7 @@ height=275
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[46]:</div>
+    <div class="prompt output_prompt">Out[160]:</div>
 
 
 
@@ -16128,7 +16064,7 @@ height=275
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="prompt input_prompt">In&nbsp;[161]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create the figure and axes</span>
@@ -16216,7 +16152,7 @@ height=275
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="prompt input_prompt">In&nbsp;[162]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set the threshold</span>
@@ -16226,7 +16162,7 @@ height=275
 <span class="n">t</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Print the result</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;t=</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">, p=</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">, can reject=</span><span class="si">{</span><span class="n">p</span> <span class="o">&lt;</span> <span class="n">thr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;t=</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">, p=</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">, can reject null hypothesis=</span><span class="si">{</span><span class="n">p</span> <span class="o">&lt;</span> <span class="n">thr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -16243,7 +16179,7 @@ height=275
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>t=-1.7830545865581873, p=0.08256721720461004, can reject=False
+<pre>t=-1.7830545865581873, p=0.08256721720461004, can reject null hypothesis=False
 </pre>
 </div>
 </div>
@@ -16432,7 +16368,7 @@ $${s_{X=[x_1, ..., x_n]}^{2}= {\frac {1}{n-1}}\sum _{i=1}^{n}\left(x_{i}-{\overl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="prompt input_prompt">In&nbsp;[163]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set the random number generator</span>
@@ -16462,7 +16398,7 @@ $${s_{X=[x_1, ..., x_n]}^{2}= {\frac {1}{n-1}}\sum _{i=1}^{n}\left(x_{i}-{\overl
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[49]:</div>
+    <div class="prompt output_prompt">Out[163]:</div>
 
 
 
@@ -16603,7 +16539,7 @@ $${s_{X=[x_1, ..., x_n]}^{2}= {\frac {1}{n-1}}\sum _{i=1}^{n}\left(x_{i}-{\overl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="prompt input_prompt">In&nbsp;[164]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mean x1: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">x1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -16643,7 +16579,7 @@ mean x2: 124.42115761217228
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="prompt input_prompt">In&nbsp;[165]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create the figure and the axes</span>
@@ -16704,7 +16640,7 @@ height=275
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[52]:</div>
+<div class="prompt input_prompt">In&nbsp;[166]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set the threshold</span>
@@ -16761,7 +16697,7 @@ $${s_{X=[x_1, ..., x_n]}^{2}= {\frac {1}{n-1}}\sum _{i=1}^{n}\left(x_{i}-{\overl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
+<div class="prompt input_prompt">In&nbsp;[167]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Compute the unbiased estimators of the variance</span>
@@ -16809,7 +16745,7 @@ $${\displaystyle s_{p}={\sqrt {\frac {s_{X_{1}}^{2}+s_{X_{2}}^{2}}{2}}}.}$$<p>[.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
+<div class="prompt input_prompt">In&nbsp;[168]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Compute the pooled standard deviation of the two samples</span>
@@ -16853,7 +16789,7 @@ $$ t={\frac {{\bar {X}}_{1}-{\bar {X}}_{2}}{s_{p}{\sqrt {\frac {2}{n}}}}}$$<p>[.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[55]:</div>
+<div class="prompt input_prompt">In&nbsp;[169]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Compute the denominator</span>
@@ -16896,7 +16832,7 @@ $$ t={\frac {{\bar {X}}_{1}-{\bar {X}}_{2}}{s_{p}{\sqrt {\frac {2}{n}}}}}$$<p>[.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[56]:</div>
+<div class="prompt input_prompt">In&nbsp;[170]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Compute the value of the t</span>
