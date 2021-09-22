@@ -1,0 +1,14 @@
+diseases,men_deaths,men_cases,women_deaths,women_cases
+Kidney Cancer,10000,30000,6000,20000
+Bladder Cancer,12000,50000,5500,18000
+Esophageal Cancer,13000,13000,5000,5000
+Ovarian Cancer,0,0,20000,25000
+Liver Cancer,14000,16000,9000,9000
+"Non-Hodgkin's
+lymphoma",12000,30000,12000,29000
+Leukemia,16000,25000,13000,24000
+Prostate Cancer,25000,220000,0,0
+Pancreatic Cancer,20000,22000,19000,21000
+Breast Cancer,500,600,40000,160000
+Colorectal Cancer,25000,55000,30000,55000
+Lung Cancer,80000,115000,70000,97000
