@@ -56,6 +56,7 @@ $(document).ready(function () {
     def _default_template_path_default(self):
         path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                             "templates")
+
         return path
 
     def _template_file_default(self):
