@@ -14392,7 +14392,7 @@ $( document ).ready(function(){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import the libraries</span>
@@ -14521,7 +14521,7 @@ Explain what <b>user models</b> are. Name some examples of user models and their
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Examples-of-user-models">Examples of user models<a class="anchor-link" href="#Examples-of-user-models">&#182;</a></h2><p>User models are ubiquitous today, taking many forms and using several techniques. For instance, user models are used in: recommender systems, menu adaptation, news applications and search engines.</p>
+<h2 id="Examples-of-user-models">Examples of user models<a class="anchor-link" href="#Examples-of-user-models">&#182;</a></h2><p>User models are ubiquitous today, taking many forms and using several techniques. For instance, user models can be used in recommender systems, menu adaptation, news applications and search engines.</p>
 
 </div>
 </div>
@@ -14529,10 +14529,10 @@ Explain what <b>user models</b> are. Name some examples of user models and their
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="User-research-and-user-modeling">User research and user modeling<a class="anchor-link" href="#User-research-and-user-modeling">&#182;</a></h2><p>User research and user modeling are tightly related concepts: user research can be used to build user models.</p>
+<h2 id="User-research-and-user-modeling">User research and user modeling<a class="anchor-link" href="#User-research-and-user-modeling">&#182;</a></h2><p>User research and user modeling are related concepts: user research can be used to build user models.</p>
 <p>The diagram below illustrates the relationship between <strong>user models</strong> and <strong>user research</strong>. Assume that we are attempting to better understand user behavior in a streaming platform, specifically when the user is choosing content to view.</p>
 <p><strong>User research</strong>: We decide to perform a quantitative study of the categories of films users most often want to watch. Hence, we (1) collect data by recording user behavior in a task and then (2) produce descriptive statistics of this dataset. This data can then be further analyzed, and some hypotheses of user behavior are formed.</p>
-<p><strong>User modeling</strong>: User modeling builds on user research. The hypotheses formed about user behavior are summarized into (3) a user model. Then this user model can be (4) used to produce data in the same tasks as the real users encountered. If the user model is accurate at capturing user behavior, (5) the data produced by it should produce similar descriptive statistics as the ground truth data.</p>
+<p><strong>User modeling</strong>: User modeling builds on user research. The hypotheses formed about user behavior are summarized into (3) a user model. Then this user model can be (4) used to produce data in similar tasks as the real users encountered. If the user model is accurate at capturing user behavior, (5) the data produced by it should produce similar descriptive statistics as the ground truth data.</p>
 
 </div>
 </div>
@@ -14561,7 +14561,7 @@ What is a user model in the context of this lecture?
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Challenges-in-user-modeling">Challenges in user modeling<a class="anchor-link" href="#Challenges-in-user-modeling">&#182;</a></h2><p>User modeling is not an easy task due to the complexity of behavior users can exhibit. Advances in computational techniques have made created flexibility in user modeling, but also introduced challenges, some of which are listed below (adapted from <a href="https://doi.org/10.1109/MIS.2017.3711638">De Bra, 2017</a>; <a href="https://doi.org/10.1023/A:1011117102175">Webb, 2000</a>).</p>
+<h2 id="Challenges-in-user-modeling">Challenges in user modeling<a class="anchor-link" href="#Challenges-in-user-modeling">&#182;</a></h2><p>User modeling is not an easy task due to the complexity of behavior users can exhibit. Advances in computational techniques allow flexibility in user modeling, but also introduce challenges, some of which are listed below (adapted from <a href="https://doi.org/10.1109/MIS.2017.3711638">De Bra, 2017</a>; <a href="https://doi.org/10.1023/A:1011117102175">Webb, 2000</a>).</p>
 <h3 id="User-models-should-be-tractable">User models should be <em>tractable</em><a class="anchor-link" href="#User-models-should-be-tractable">&#182;</a></h3><p>The user should be able to trace what the system knows about them and how the model is constructed.</p>
 <h3 id="Research-results-in-user-modeling-should-be-repeatable-in-various-contexts">Research results in user modeling should be <em>repeatable</em> in various contexts<a class="anchor-link" href="#Research-results-in-user-modeling-should-be-repeatable-in-various-contexts">&#182;</a></h3><p>User modeling research can take place in various application contexts (e.g., recommendation systems, menu adaptation, intelligent tutoring systems, social media, etc.). A user model should produce results that are stable in similar applications, and ideally, across contexts.</p>
 <h3 id="Computational-complexity-should-not-limit-the-use-of-a-user-model"><em>Computational complexity</em> should not limit the use of a user model<a class="anchor-link" href="#Computational-complexity-should-not-limit-the-use-of-a-user-model">&#182;</a></h3><p>Certain user modeling approaches may be highly costly to run, which can make them inconvenient to use in live systems.</p>
@@ -14575,7 +14575,8 @@ What is a user model in the context of this lecture?
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Model-types">Model types<a class="anchor-link" href="#Model-types">&#182;</a></h2><p>Different model types address the challenges presented in the previous section. Two important distinctions are the difference between <strong>theory-based and data-driven</strong> models as well as <strong>individual-level and aggregate models</strong>.</p>
 <h3 id="Theory-based-vs.-data-driven-models">Theory-based vs. data-driven models<a class="anchor-link" href="#Theory-based-vs.-data-driven-models">&#182;</a></h3><p><strong>Theory-based models</strong> are based on some model with (mostly) interpretable parameters. The benefits of theory-based models are that they are more tractable and require smaller datasets than data-driven models. The downside is that the given theory-based model needs to be a good description of the underlying phenomenon to produce meaningful results.</p>
-<p>In <strong>data-driven models</strong> the relationships between different features are learned. The benefit of these models is that they usually provide better predictive accuracy. On the other hand, this comes with the downside of potential computational complexity.</p>
+<p>In <strong>data-driven models</strong> the relationships between different features are learned (though this definition does not necessarily describe all data-driven models). The benefit of these models is, for instance, their predictive accuracy. On the other hand, data-driven model may come with the downside of computational complexity.</p>
+<p>Note that models also exist between theory-based and data-driven models.</p>
 <h3 id="Individual-level-vs.-aggregate-models">Individual-level vs. aggregate models<a class="anchor-link" href="#Individual-level-vs.-aggregate-models">&#182;</a></h3><p>In HCI applications, modeling the behavior of an individual user is often critical as their preferences may deviate from the average. However, if it is safe to assume that the behavior across individuals is similar, adopting an aggregate model can also be acceptable.</p>
 
 </div>
@@ -14739,7 +14740,7 @@ Understand the basic principles of <b>designing a user model</b> that describes 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><b>M2. <a href="https://en.wikipedia.org/wiki/Win%E2%80%93stay,_lose%E2%80%93switch">Win-Stay-Lose-Switch</a> (Noisy variant)</b></p>
+<p><b>M1. <a href="https://en.wikipedia.org/wiki/Win%E2%80%93stay,_lose%E2%80%93switch">Win-Stay-Lose-Switch</a> (Noisy variant)</b></p>
 <p><img src="img/wsls.png" width="200"></p>
 <p><ul>
     <li>Decision rule ($\epsilon$)</p>
@@ -14832,6 +14833,14 @@ What features does a modeler need to take into account when designing candidate 
 <h4><img src="img/logo/goal.png" width="20" align="left"><a class="tocSkip"></a>&nbsp;Goal</h4> 
 Be able to <b>fit a model</b> to some data
 </div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this section we look at how to fit a model to given data using <a href="https://en.wikipedia.org/wiki/Maximum_likelihood_estimation">maximum likelihood estimation</a>.</p>
+
 </div>
 </div>
 </div>
@@ -15084,7 +15093,7 @@ Be able to <b>fit a model</b> to some data
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Optimize</span>
 <span class="n">best_param</span><span class="p">,</span> <span class="n">best_value</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">WSLS</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">wsls_data</span><span class="p">)</span>
 
-<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimate for parameter: </span><span class="si">{</span><span class="n">best_param</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimate for parameter: </span><span class="si">{</span><span class="n">best_param</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Corresponding log likelihood: </span><span class="si">{</span><span class="n">best_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -15102,7 +15111,7 @@ Be able to <b>fit a model</b> to some data
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Estimate for parameter: [0.25651302]
+<pre>Estimate for parameter: 0.25651301500287144
 Corresponding log likelihood: 191.83954810197105
 </pre>
 </div>
@@ -15269,7 +15278,7 @@ Corresponding log likelihood: 191.83954810197105
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Computing data for parameter space exploration...
-100%|██████████████████████████████████████████████████████████| 1000/1000 [00:20&lt;00:00, 48.14it/s]
+100%|███████████████████████████████████████| 1000/1000 [00:19&lt;00:00, 50.97it/s]
 </pre>
 </div>
 </div>
@@ -15343,7 +15352,7 @@ Corresponding log likelihood: 191.83954810197105
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The log likelihoods are negative, in contrast to the <code>best_value</code> returned earlier. Note that the <code>objective</code> function returns the negative of these values, making it possible to find the minimum log-likelihood corresponding to the best fit parameter value.</p>
+<p>The log likelihoods are negative, in contrast to the <code>best_value</code> returned earlier. Note that the <code>objective</code> function returns the negative log likelihood, making it possible to find the minimum which corresponds to the best fit parameter value.</p>
 
 </div>
 </div>
@@ -15451,7 +15460,7 @@ height=216
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Interpreting-results">Interpreting results<a class="anchor-link" href="#Interpreting-results">&#182;</a></h2><p>Recall that in the model description we noted that $\epsilon$ is a free parameter describing the probability to choose randomly instead of applying the "Win-Stay-Lose-Switch' rule. The model fitting results can be interpreted in the light of this information. That is, the probability that an individual will choose randomly is around 0.26 according to our estimate. Given the task is to choose between movies in a streaming platform, the user behavior can be interpreted as follows: at probability 0.26 the user will choose randomly, otherwise if they like a movie, they will choose it again - and if the hate it, switch.</p>
+<h2 id="Interpreting-results">Interpreting results<a class="anchor-link" href="#Interpreting-results">&#182;</a></h2><p>Recall that in the model description we noted that $\epsilon$ is a free parameter describing the probability to choose randomly instead of applying the "Win-Stay-Lose-Switch" rule. The model fitting results can be interpreted in the light of this information. That is, the probability that an individual will choose randomly is around 0.26 according to our estimate. Given the task is to choose between movies in a streaming platform, the user behavior can be interpreted as follows: at probability 0.26 the user will choose randomly, otherwise if they like a movie, they will choose it again - and if the hate it, switch.</p>
 
 </div>
 </div>
@@ -15479,14 +15488,14 @@ What kind of a result does the model fitting presented in this notebook yield?
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Simulating-user-behaviour">Simulating user behaviour<a class="anchor-link" href="#Simulating-user-behaviour">&#182;</a></h2><p>A benefit of a computational model of user behavior is that it is easy to simulate behaviors using this model.</p>
+<h2 id="Simulating-user-behaviour">Simulating user behaviour<a class="anchor-link" href="#Simulating-user-behaviour">&#182;</a></h2><p>A benefit of a computational model of user behavior is that it is easy to simulate behaviors using this model, which is demonstrated below (in code and with a plot).</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">run_simulation</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
@@ -15541,7 +15550,7 @@ What kind of a result does the model fitting presented in this notebook yield?
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load the data</span>
@@ -15670,7 +15679,7 @@ What kind of a result does the model fitting presented in this notebook yield?
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create figure and axes</span>
@@ -15735,7 +15744,7 @@ Be able to <b>conduct a parameter recovery study</b> and explain why their resul
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>After fitting a model to data, a necessary question that needs to be asked is: <em>How confident can we be in our estimate?</em> This section presents a technique called <strong>parameter recovery</strong>, which addresses this question</p>
+<p>After fitting a model to data, a necessary question that needs to be asked is: <em>How confident can we be in our estimate?</em> This section presents a technique called <strong>parameter recovery</strong>, which addresses this question.</p>
 
 </div>
 </div>
@@ -15753,7 +15762,7 @@ Be able to <b>conduct a parameter recovery study</b> and explain why their resul
 <p>Parameter recovery is used in judging whether a given model and estimation technique provide accurate and consistent results when fitted to data (see, e.g., <a href="https://doi.org/10.7554/eLife.49547">Wilson &amp; Collins (2019)</a> or <a href="https://doi.org/10.1007/978-1-4939-2236-9_2">Heathcote et al. (2015)</a>).</p>
 <p>That is, consider data produced by a model with some parameters $\theta$. The same model is then fitted to this generated data to obtain inferred parameters $\hat{\theta}$. The generating parameters $\theta$ should be close to the inferred parameters $\hat{\theta}$. In our example case, this would mean the following: consider that there is an individual producing data with given value of $\epsilon$ in WSLS. We take the data that this individual has generated and fit WSLS to it. We should obtain a value of $\hat{\epsilon}$ that is close to the original one. If this is not the case, the parameters of the model do not recover.</p>
 <p>Inadequate parameter recovery is a warning sign in modeling. It suggests that a given model specification or parameter inference technique might not be suitable for the given modeling task.</p>
-<p>This can be best understood by thinking about a case when parameter recovery has not been verified and the modeler directly proceeds to fitting the model to data. The modeler assumes that the chosen model is a good description of the underlying phenomenon and thus trusts that the inferred parameters are accurate. However, since the ground truth parameters are unknown, there is no way of verifying the accuracy of the inferred parameters. Here parameter recovery can help. By considering data generated by known parameters, we can assess whether it is theoretically possible to recover the parameters and obtain consistent results.</p>
+<p>This can be also understood by thinking about a case when parameter recovery has not been verified and the modeler directly proceeds to fitting the model to data. The modeler assumes that the chosen model is a good description of the underlying phenomenon and thus trusts that the inferred parameters are accurate. However, since the ground truth parameters are unknown, there is no way of verifying the accuracy of the inferred parameters. Here parameter recovery can help. By considering data generated by known parameters, we can assess whether it is theoretically possible to recover the parameters and obtain consistent results.</p>
 <p>As a caveat, even though unsuccessful parameter recovery is a warning sign suggesting that the given model should not be fitted to data with the chosen inference technique, good parameter recovery does not guarantee that results are reliable. However, they can increase our confidence in the inference results.</p>
 
 </div>
@@ -15778,7 +15787,7 @@ Be able to <b>conduct a parameter recovery study</b> and explain why their resul
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Seed the pseudo-random number generator</span>
@@ -15832,7 +15841,7 @@ Be able to <b>conduct a parameter recovery study</b> and explain why their resul
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>100%|██████████████████████████████████████████████████████████████| 30/30 [00:09&lt;00:00,  3.04it/s]
+<pre>100%|███████████████████████████████████████████| 30/30 [00:09&lt;00:00,  3.08it/s]
 </pre>
 </div>
 </div>
