@@ -15095,7 +15095,7 @@ Be able to <b>fit a model</b> to some data
 <span class="n">best_param</span><span class="p">,</span> <span class="n">best_value</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">WSLS</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">wsls_data</span><span class="p">)</span>
 
 <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimate for parameter: </span><span class="si">{</span><span class="n">best_param</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Corresponding log likelihood: </span><span class="si">{</span><span class="n">best_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Corresponding log-likelihood: </span><span class="si">{</span><span class="n">best_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -15125,7 +15125,7 @@ Corresponding log likelihood: 191.83954810197105
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Explore-parameter-space">Explore parameter space<a class="anchor-link" href="#Explore-parameter-space">&#182;</a></h3><p>Let's have a closer look what happens under the hood by exploring log likelihoods different parameter values have. First, define the parameter values to explore.</p>
+<h3 id="Explore-parameter-space">Explore parameter space<a class="anchor-link" href="#Explore-parameter-space">&#182;</a></h3><p>Let's have a closer look what happens under the hood by exploring log-likelihood sums different parameter values have. First, define the parameter values to explore.</p>
 
 </div>
 </div>
@@ -15226,7 +15226,7 @@ Corresponding log likelihood: 191.83954810197105
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Then calculate log likelihood for each of these values.</p>
+<p>Then calculate log-likelihood sum for each of these values.</p>
 
 </div>
 </div>
@@ -15243,7 +15243,7 @@ Corresponding log likelihood: 191.83954810197105
 <span class="c1"># Loop over each value of the parameter grid for all parameters</span>
 <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">grid_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">(),</span> <span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">grid_df</span><span class="p">),</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">):</span>
 
-    <span class="c1"># Compute the log likelihood</span>
+    <span class="c1"># Compute the log-likelihood</span>
     <span class="n">ll</span> <span class="o">=</span> <span class="n">log_likelihood</span><span class="p">(</span>
         <span class="n">data</span><span class="o">=</span><span class="n">wsls_data</span><span class="p">,</span>  <span class="c1"># THIS IS SPECIFIC</span>
         <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>              <span class="c1"># THIS IS SPECIFIC</span>
@@ -15353,7 +15353,7 @@ Corresponding log likelihood: 191.83954810197105
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The log likelihoods are negative, in contrast to the <code>best_value</code> returned earlier. Note that the <code>objective</code> function returns the negative log likelihood, making it possible to find the minimum which corresponds to the best fit parameter value.</p>
+<p>The log-likelihood sums are negative, in contrast to the <code>best_value</code> returned earlier. Note that the <code>objective</code> function returns the negative log-likelihood sum, making it possible to find the minimum which corresponds to the best fit parameter value.</p>
 
 </div>
 </div>
@@ -15367,7 +15367,7 @@ Corresponding log likelihood: 191.83954810197105
 <span class="n">best_param_manual</span><span class="p">,</span> <span class="n">best_value_manual</span> <span class="o">=</span> <span class="n">row_max_ll</span><span class="p">[</span><span class="s2">&quot;$\epsilon$&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">row_max_ll</span><span class="p">[</span><span class="s2">&quot;log-likelihood&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
 
 <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimate for parameter: </span><span class="si">{</span><span class="n">best_param_manual</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Corresponding log likelihood: </span><span class="si">{</span><span class="n">best_value_manual</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Corresponding log-likelihood: </span><span class="si">{</span><span class="n">best_value_manual</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -15397,7 +15397,7 @@ Corresponding log likelihood: -191.8395849044937
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Finally, plotting the log likelihoods shows the maximum where $\epsilon \approx 0.26$.</p>
+<p>Finally, plotting the log-likelihood sums shows the maximum where $\epsilon \approx 0.26$.</p>
 
 </div>
 </div>
