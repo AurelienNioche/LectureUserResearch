@@ -15228,8 +15228,8 @@ Corresponding log-likelihood: 191.83954810197105
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Then calculate $P(D)$ for each of these values of $\epsilon$ using the log-likelihood sum (LLS). That is, consider that we have dataset $D$ that contains data from each time step $t$. At each time step $t$ choice $d$ is recorded. Thus, the following is calculated:</p>
 \begin{aligned}
-\text{log} p(D) &amp;= \text{log}[p(d_1) \cdot p(d_2) ... P(d_t)] \\
-\text{log} p(D) &amp;= \text{log} p(d_1) + \text{log} p(d_2) + ... + \text{log} P(d_t) \\
+\text{log} p(D) &amp;= \text{log}[p(d_1) \times p(d_2) ... \times p(d_t)] \\
+\text{log} p(D) &amp;= \text{log} p(d_1) + \text{log} p(d_2) + ... + \text{log} p(d_t) \\
 \text{log} p(D) &amp;= \sum \text{log} p(d)
 \end{aligned}<p>This is implemented in the <code>log_likelihood</code> function above. The aim is to maximize LLS, which is equivalent to minimizing negative LLS.</p>
 
@@ -15284,7 +15284,7 @@ Corresponding log-likelihood: 191.83954810197105
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Computing data for parameter space exploration...
-100%|███████████████████████████████████████| 1000/1000 [00:19&lt;00:00, 51.26it/s]
+100%|███████████████████████████████████████| 1000/1000 [00:19&lt;00:00, 50.05it/s]
 </pre>
 </div>
 </div>
@@ -15358,7 +15358,7 @@ Corresponding log-likelihood: 191.83954810197105
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The log-likelihoods above are negative, in contrast to the <code>best_value</code> returned earlier. Note that the <code>objective</code> function returns the negative LLS, so we find the minimum which corresponds to the best fit parameter value.</p>
+<p>As mentioned, the log-likelihoods above are negative, in contrast to the <code>best_value</code> returned earlier. Note that the <code>objective</code> function returns the negative LLS, so we find the minimum which corresponds to the best fit parameter value.</p>
 
 </div>
 </div>
@@ -15847,7 +15847,7 @@ Be able to <b>conduct a parameter recovery study</b> and explain why their resul
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>100%|███████████████████████████████████████████| 30/30 [00:09&lt;00:00,  3.13it/s]
+<pre>100%|███████████████████████████████████████████| 30/30 [00:10&lt;00:00,  2.97it/s]
 </pre>
 </div>
 </div>
